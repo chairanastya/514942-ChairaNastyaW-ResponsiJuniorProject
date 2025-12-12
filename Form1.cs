@@ -30,7 +30,7 @@ namespace responsi
         }
         private void LoadDataDeveloper()
         {
-            listDevs.Clear(); 
+            listDevs.Clear();
             try
             {
                 using (NpgsqlConnection conn = new NpgsqlConnection(connString))
@@ -75,8 +75,8 @@ namespace responsi
                         Status = d.Status,
                         Fitur = d.Fitur,
                         Bug = d.Bug,
-                        Skor = d.HitungSkor().ToString("0.##"), 
-                        TotalGaji = d.HitungGaji().ToString("N0") 
+                        Skor = d.HitungSkor().ToString("0.##"),
+                        TotalGaji = d.HitungGaji().ToString("N0")
                     });
                 }
                 dgvData.DataSource = null;
@@ -155,7 +155,7 @@ namespace responsi
                         cmd.ExecuteNonQuery();
                     }
                 }
-                LoadDataDeveloper(); 
+                LoadDataDeveloper();
                 ClearForm();
             }
             catch (Exception ex)
@@ -261,6 +261,16 @@ namespace responsi
         }
         private void label8_Click(object sender, EventArgs e)
         {
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

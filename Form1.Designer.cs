@@ -47,10 +47,10 @@
             dgvData = new DataGridView();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
+            label7 = new Label();
+            label3 = new Label();
             groupBox3 = new GroupBox();
             pictureBox1 = new PictureBox();
-            label3 = new Label();
-            label7 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvData).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -114,7 +114,7 @@
             // 
             txtNama.BackColor = SystemColors.InactiveCaption;
             txtNama.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtNama.Location = new Point(145, 22);
+            txtNama.Location = new Point(138, 22);
             txtNama.Name = "txtNama";
             txtNama.Size = new Size(489, 23);
             txtNama.TabIndex = 6;
@@ -124,7 +124,7 @@
             cbProyek.BackColor = SystemColors.InactiveCaption;
             cbProyek.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbProyek.FormattingEnabled = true;
-            cbProyek.Location = new Point(145, 51);
+            cbProyek.Location = new Point(138, 51);
             cbProyek.Name = "cbProyek";
             cbProyek.Size = new Size(489, 23);
             cbProyek.TabIndex = 7;
@@ -134,7 +134,7 @@
             cbStatus.BackColor = SystemColors.InactiveCaption;
             cbStatus.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbStatus.FormattingEnabled = true;
-            cbStatus.Location = new Point(145, 80);
+            cbStatus.Location = new Point(138, 80);
             cbStatus.Name = "cbStatus";
             cbStatus.Size = new Size(489, 23);
             cbStatus.TabIndex = 8;
@@ -159,6 +159,7 @@
             label9.Size = new Size(69, 15);
             label9.TabIndex = 11;
             label9.Text = "Jumlah Bug";
+            label9.Click += label9_Click;
             // 
             // txtFitur
             // 
@@ -166,7 +167,7 @@
             txtFitur.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtFitur.Location = new Point(145, 26);
             txtFitur.Name = "txtFitur";
-            txtFitur.Size = new Size(93, 23);
+            txtFitur.Size = new Size(230, 23);
             txtFitur.TabIndex = 12;
             // 
             // txtBug
@@ -175,7 +176,7 @@
             txtBug.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtBug.Location = new Point(145, 55);
             txtBug.Name = "txtBug";
-            txtBug.Size = new Size(93, 23);
+            txtBug.Size = new Size(230, 23);
             txtBug.TabIndex = 13;
             // 
             // btnInsert
@@ -213,11 +214,11 @@
             // 
             dgvData.BackgroundColor = SystemColors.ActiveCaption;
             dgvData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvData.Location = new Point(0, 31);
+            dgvData.Location = new Point(0, 22);
             dgvData.Name = "dgvData";
             dgvData.ReadOnly = true;
             dgvData.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvData.Size = new Size(640, 195);
+            dgvData.Size = new Size(640, 204);
             dgvData.TabIndex = 17;
             dgvData.CellContentClick += dgvData_CellContentClick;
             // 
@@ -253,6 +254,29 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Data Kinerja";
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.ForeColor = SystemColors.ControlDarkDark;
+            label7.Location = new Point(402, 58);
+            label7.Name = "label7";
+            label7.Size = new Size(225, 15);
+            label7.TabIndex = 15;
+            label7.Text = "Masukkan angka jumlah bug yang terjadi";
+            label7.Click += label7_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.ForeColor = SystemColors.ControlDarkDark;
+            label3.Location = new Point(402, 29);
+            label3.Name = "label3";
+            label3.Size = new Size(198, 15);
+            label3.TabIndex = 14;
+            label3.Text = "Masukkan angka jumlah fitur selesai";
+            // 
             // groupBox3
             // 
             groupBox3.Controls.Add(dgvData);
@@ -273,28 +297,6 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 21;
             pictureBox1.TabStop = false;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.ForeColor = SystemColors.ControlDarkDark;
-            label3.Location = new Point(253, 29);
-            label3.Name = "label3";
-            label3.Size = new Size(198, 15);
-            label3.TabIndex = 14;
-            label3.Text = "Masukkan angka jumlah fitur selesai";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.ForeColor = SystemColors.ControlDarkDark;
-            label7.Location = new Point(253, 58);
-            label7.Name = "label7";
-            label7.Size = new Size(225, 15);
-            label7.TabIndex = 15;
-            label7.Text = "Masukkan angka jumlah bug yang terjadi";
             // 
             // Form1
             // 
