@@ -49,6 +49,8 @@
             groupBox2 = new GroupBox();
             groupBox3 = new GroupBox();
             pictureBox1 = new PictureBox();
+            label3 = new Label();
+            label7 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvData).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -237,6 +239,8 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(label7);
+            groupBox2.Controls.Add(label3);
             groupBox2.Controls.Add(txtFitur);
             groupBox2.Controls.Add(label8);
             groupBox2.Controls.Add(label9);
@@ -269,6 +273,28 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 21;
             pictureBox1.TabStop = false;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.ForeColor = SystemColors.ControlDarkDark;
+            label3.Location = new Point(253, 29);
+            label3.Name = "label3";
+            label3.Size = new Size(198, 15);
+            label3.TabIndex = 14;
+            label3.Text = "Masukkan angka jumlah fitur selesai";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.ForeColor = SystemColors.ControlDarkDark;
+            label7.Location = new Point(253, 58);
+            label7.Name = "label7";
+            label7.Size = new Size(225, 15);
+            label7.TabIndex = 15;
+            label7.Text = "Masukkan angka jumlah bug yang terjadi";
             // 
             // Form1
             // 
@@ -321,5 +347,7 @@
         private GroupBox groupBox2;
         private GroupBox groupBox3;
         private PictureBox pictureBox1;
+        private Label label7;
+        private Label label3;
     }
 }

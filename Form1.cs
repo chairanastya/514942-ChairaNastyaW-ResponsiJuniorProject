@@ -16,7 +16,6 @@ namespace responsi
         {
             InitializeComponent();
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadProyekCombo();
@@ -27,11 +26,9 @@ namespace responsi
             cbStatus.Items.Add("Freelance");
             cbStatus.SelectedIndex = -1;
         }
-
         private void LoadDataDeveloper()
         {
             listDevs.Clear(); 
-
             try
             {
                 using (NpgsqlConnection conn = new NpgsqlConnection(connString))
@@ -80,11 +77,9 @@ namespace responsi
                         TotalGaji = d.HitungGaji().ToString("N0") 
                     });
                 }
-
                 dgvData.DataSource = null;
                 dgvData.DataSource = displayList;
 
-                // Hide ID column
                 dgvData.Columns["ID"].Visible = false;
             }
             catch (Exception ex)
@@ -92,7 +87,6 @@ namespace responsi
                 MessageBox.Show("Error Load: " + ex.Message);
             }
         }
-
         private bool IsBudgetSafe(int idProyek, decimal gajiDeveloperBaru, int ignoreDevId = -1)
         {
             decimal totalGajiExisting = 0;
@@ -109,7 +103,6 @@ namespace responsi
                     object result = cmd.ExecuteScalar();
                     if (result != null) budgetProyek = Convert.ToDecimal(result);
                 }
-
                 foreach (var dev in listDevs)
                 {
                     // Hanya hitung developer di proyek yang sama, KECUALI developer yang sedang diedit
@@ -119,7 +112,6 @@ namespace responsi
                     }
                 }
             }
-
             decimal totalPerkiraan = totalGajiExisting + gajiDeveloperBaru;
 
             if (totalPerkiraan > budgetProyek)
@@ -129,7 +121,6 @@ namespace responsi
             }
             return true;
         }
-
         private void btnInsert_Click(object sender, EventArgs e)
         {
             if (cbProyek.SelectedIndex == -1 || cbStatus.SelectedIndex == -1) return;
@@ -211,7 +202,6 @@ namespace responsi
                 MessageBox.Show("Error Update: " + ex.Message);
             }
         }
-
         private void LoadProyekCombo()
         {
             using (NpgsqlConnection conn = new NpgsqlConnection(connString))
@@ -225,7 +215,6 @@ namespace responsi
                 cbProyek.ValueMember = "id_proyek";
             }
         }
-
         private void dgvData_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -241,14 +230,12 @@ namespace responsi
                 txtBug.Text = dev.Bug.ToString();
             }
         }
-
         private void ClearForm()
         {
             selectedId = 0;
             txtNama.Clear(); txtFitur.Clear(); txtBug.Clear();
             cbProyek.SelectedIndex = -1; cbStatus.SelectedIndex = -1;
         }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (selectedId == 0) return;
@@ -267,13 +254,11 @@ namespace responsi
                 ClearForm();
             }
         }
-
         private void label1_Click(object sender, EventArgs e)
         {
         }
-
         private void label8_Click(object sender, EventArgs e)
         {
         }
     }
-    }
+}
