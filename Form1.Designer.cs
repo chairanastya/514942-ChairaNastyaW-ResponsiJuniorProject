@@ -114,7 +114,7 @@
             txtNama.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtNama.Location = new Point(145, 22);
             txtNama.Name = "txtNama";
-            txtNama.Size = new Size(393, 23);
+            txtNama.Size = new Size(489, 23);
             txtNama.TabIndex = 6;
             // 
             // cbProyek
@@ -124,7 +124,7 @@
             cbProyek.FormattingEnabled = true;
             cbProyek.Location = new Point(145, 51);
             cbProyek.Name = "cbProyek";
-            cbProyek.Size = new Size(393, 23);
+            cbProyek.Size = new Size(489, 23);
             cbProyek.TabIndex = 7;
             // 
             // cbStatus
@@ -134,7 +134,7 @@
             cbStatus.FormattingEnabled = true;
             cbStatus.Location = new Point(145, 80);
             cbStatus.Name = "cbStatus";
-            cbStatus.Size = new Size(393, 23);
+            cbStatus.Size = new Size(489, 23);
             cbStatus.TabIndex = 8;
             // 
             // label8
@@ -143,9 +143,10 @@
             label8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label8.Location = new Point(8, 29);
             label8.Name = "label8";
-            label8.Size = new Size(69, 15);
+            label8.Size = new Size(110, 15);
             label8.TabIndex = 10;
-            label8.Text = "Fitur Selesai";
+            label8.Text = "Jumlah Fitur Selesai";
+            label8.Click += label8_Click;
             // 
             // label9
             // 
@@ -163,7 +164,7 @@
             txtFitur.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtFitur.Location = new Point(145, 26);
             txtFitur.Name = "txtFitur";
-            txtFitur.Size = new Size(393, 23);
+            txtFitur.Size = new Size(93, 23);
             txtFitur.TabIndex = 12;
             // 
             // txtBug
@@ -172,7 +173,7 @@
             txtBug.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtBug.Location = new Point(145, 55);
             txtBug.Name = "txtBug";
-            txtBug.Size = new Size(393, 23);
+            txtBug.Size = new Size(93, 23);
             txtBug.TabIndex = 13;
             // 
             // btnInsert
@@ -180,7 +181,7 @@
             btnInsert.ForeColor = SystemColors.ControlText;
             btnInsert.Location = new Point(32, 394);
             btnInsert.Name = "btnInsert";
-            btnInsert.Size = new Size(154, 34);
+            btnInsert.Size = new Size(191, 34);
             btnInsert.TabIndex = 14;
             btnInsert.Text = "Insert";
             btnInsert.UseVisualStyleBackColor = true;
@@ -188,9 +189,9 @@
             // 
             // btnUpdate
             // 
-            btnUpdate.Location = new Point(229, 394);
+            btnUpdate.Location = new Point(252, 394);
             btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(158, 34);
+            btnUpdate.Size = new Size(203, 34);
             btnUpdate.TabIndex = 15;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = true;
@@ -198,9 +199,9 @@
             // 
             // btnDelete
             // 
-            btnDelete.Location = new Point(425, 394);
+            btnDelete.Location = new Point(482, 394);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(154, 34);
+            btnDelete.Size = new Size(187, 34);
             btnDelete.TabIndex = 16;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
@@ -214,7 +215,7 @@
             dgvData.Name = "dgvData";
             dgvData.ReadOnly = true;
             dgvData.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvData.Size = new Size(547, 195);
+            dgvData.Size = new Size(640, 195);
             dgvData.TabIndex = 17;
             dgvData.CellContentClick += dgvData_CellContentClick;
             // 
@@ -229,7 +230,7 @@
             groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(29, 145);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(550, 120);
+            groupBox1.Size = new Size(640, 120);
             groupBox1.TabIndex = 18;
             groupBox1.TabStop = false;
             groupBox1.Text = "Data Developer";
@@ -243,7 +244,7 @@
             groupBox2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox2.Location = new Point(29, 281);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(550, 97);
+            groupBox2.Size = new Size(640, 97);
             groupBox2.TabIndex = 19;
             groupBox2.TabStop = false;
             groupBox2.Text = "Data Kinerja";
@@ -254,7 +255,7 @@
             groupBox3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupBox3.Location = new Point(29, 440);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(550, 226);
+            groupBox3.Size = new Size(640, 226);
             groupBox3.TabIndex = 20;
             groupBox3.TabStop = false;
             groupBox3.Text = "Daftar Performa Tim";
@@ -274,7 +275,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(610, 692);
+            ClientSize = new Size(697, 692);
             Controls.Add(pictureBox1);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);

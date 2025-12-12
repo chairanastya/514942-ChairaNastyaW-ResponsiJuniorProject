@@ -7,46 +7,69 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace responsi
 {
-    public class Developer
+    // 1. ABSTRACTION: Base class abstrak
+    public abstract class Developer
     {
-        // Encapsulation: Field private diakses lewat Property public
-        private int _id;
-        private string _nama;
-        private int _fitur;
-        private int _bug;
-
-        public int Id { get => _id; set => _id = value; }
-        public string Nama { get => _nama; set => _nama = value; }
+        public int Id { get; set; }
+        public string Nama { get; set; }
         public int IdProyek { get; set; }
-        public int FiturSelesai { get => _fitur; set => _fitur = value; }
-        public int JumlahBug { get => _bug; set => _bug = value; }
+        public string NamaProyek { get; set; } // Untuk display
+        public string Status { get; set; }
+        public int Fitur { get; set; }
+        public int Bug { get; set; }
 
-        // Virtual method untuk bisa di-override (konsep Polymorphism sederhana)
-        public virtual string GetRoleDescription()
-        {
-            return "Developer Umum";
-        }
+        // Abstract Methods (Polymorphism) - Wajib di-override anak kelas
+        public abstract double HitungSkor();
+        public abstract decimal HitungGaji();
     }
 
-    // Derived Class (Anak) - Contoh Inheritance
+    // 2. INHERITANCE & POLYMORPHISM: Karyawan Full Time
     public class FullTimeDeveloper : Developer
     {
-        public string Status { get; } = "Full Time";
+        public FullTimeDeveloper() { Status = "Full Time"; }
 
-        public override string GetRoleDescription()
+        public override double HitungSkor()
         {
-            return "Karyawan Tetap";
+            // Rumus: 10 * Fitur - 5 * Bug
+            double skor = (10 * Fitur) - (5 * Bug);
+            return skor < 0 ? 0 : skor; // Skor tidak boleh negatif
+        }
+
+        public override decimal HitungGaji()
+        {
+            // Rumus: Gaji Pokok (5jt) + (Skor * 20.000)
+            decimal gajiPokok = 5000000;
+            decimal bonus = (decimal)HitungSkor() * 20000;
+            return gajiPokok + bonus;
         }
     }
 
-    // Derived Class (Anak) - Contoh Inheritance
+    // 3. INHERITANCE & POLYMORPHISM: Karyawan Freelance
     public class FreelanceDeveloper : Developer
     {
-        public string Status { get; } = "Freelance";
+        public FreelanceDeveloper() { Status = "Freelance"; }
 
-        public override string GetRoleDescription()
+        public override double HitungSkor()
         {
-            return "Pekerja Lepas";
+            // Rumus: 100 * (1 - (2*Bug / 3*Fitur))
+            if (Fitur == 0) return 0; // Hindari pembagian nol
+
+            double ratio = (2.0 * Bug) / (3.0 * Fitur);
+            double skor = 100 * (1 - ratio);
+
+            return skor < 0 ? 0 : skor; // Skor tidak mungkin kurang dari 0
+        }
+
+        public override decimal HitungGaji()
+        {
+            double skor = HitungSkor();
+            decimal tarifPerFitur;
+
+            if (skor >= 80) tarifPerFitur = 500000;
+            else if (skor >= 50) tarifPerFitur = 400000;
+            else tarifPerFitur = 250000;
+
+            return tarifPerFitur * Fitur;
         }
     }
 }
