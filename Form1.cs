@@ -198,6 +198,9 @@ namespace responsi
                 }
                 LoadDataDeveloper();
                 ClearForm();
+
+                // --- TAMBAHAN KODE DI SINI ---
+                MessageBox.Show("Data berhasil diupdate!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {

@@ -7,7 +7,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace responsi
 {
-    // 1. ABSTRACTION: Base class abstrak
+    // 1. ABSTRACTION
     public abstract class Developer
     {
         public int Id { get; set; }
