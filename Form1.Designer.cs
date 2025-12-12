@@ -61,7 +61,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Black", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(137, 36);
+            label1.Location = new Point(253, 101);
             label1.Name = "label1";
             label1.Size = new Size(206, 45);
             label1.TabIndex = 0;
@@ -72,7 +72,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(137, 78);
+            label2.Location = new Point(161, 146);
             label2.Name = "label2";
             label2.Size = new Size(376, 30);
             label2.TabIndex = 1;
@@ -179,7 +179,7 @@
             // btnInsert
             // 
             btnInsert.ForeColor = SystemColors.ControlText;
-            btnInsert.Location = new Point(32, 394);
+            btnInsert.Location = new Point(33, 453);
             btnInsert.Name = "btnInsert";
             btnInsert.Size = new Size(191, 34);
             btnInsert.TabIndex = 14;
@@ -189,7 +189,7 @@
             // 
             // btnUpdate
             // 
-            btnUpdate.Location = new Point(252, 394);
+            btnUpdate.Location = new Point(253, 453);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(203, 34);
             btnUpdate.TabIndex = 15;
@@ -199,7 +199,7 @@
             // 
             // btnDelete
             // 
-            btnDelete.Location = new Point(482, 394);
+            btnDelete.Location = new Point(483, 453);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(187, 34);
             btnDelete.TabIndex = 16;
@@ -228,7 +228,7 @@
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(label4);
             groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(29, 145);
+            groupBox1.Location = new Point(30, 204);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(640, 120);
             groupBox1.TabIndex = 18;
@@ -242,7 +242,7 @@
             groupBox2.Controls.Add(label9);
             groupBox2.Controls.Add(txtBug);
             groupBox2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox2.Location = new Point(29, 281);
+            groupBox2.Location = new Point(30, 340);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(640, 97);
             groupBox2.TabIndex = 19;
@@ -253,7 +253,7 @@
             // 
             groupBox3.Controls.Add(dgvData);
             groupBox3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox3.Location = new Point(29, 440);
+            groupBox3.Location = new Point(30, 499);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(640, 226);
             groupBox3.TabIndex = 20;
@@ -263,7 +263,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(29, 36);
+            pictureBox1.Location = new Point(320, 26);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(73, 72);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -275,7 +275,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(697, 692);
+            ClientSize = new Size(697, 753);
             Controls.Add(pictureBox1);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);

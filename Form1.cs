@@ -10,7 +10,6 @@ namespace responsi
         private string connString = "Host=localhost;Username=postgres;Password=informatika;Database=responsiresponsi";
         private int selectedId = 0;
 
-        // List untuk menampung objek Developer yang sudah dihitung gajinya (In-Memory)
         private List<Developer> listDevs = new List<Developer>();
 
         public Form1()
@@ -29,10 +28,9 @@ namespace responsi
             cbStatus.SelectedIndex = -1;
         }
 
-        // --- LOAD DATA & CONVERT TO OBJECTS ---
         private void LoadDataDeveloper()
         {
-            listDevs.Clear(); // Kosongkan list lama
+            listDevs.Clear(); 
 
             try
             {
@@ -52,7 +50,6 @@ namespace responsi
                             string status = reader["status_kontrak"].ToString();
                             Developer dev;
 
-                            // Factory Pattern sederhana: Bikin objek sesuai status
                             if (status == "Full Time") dev = new FullTimeDeveloper();
                             else dev = new FreelanceDeveloper();
 
@@ -68,9 +65,6 @@ namespace responsi
                         }
                     }
                 }
-
-                // Tampilkan ke DataGridView
-                // Kita buat proyeksi (Anonymous Type) agar kolom Skor & Gaji muncul otomatis
                 var displayList = new List<object>();
                 foreach (var d in listDevs)
                 {
@@ -82,8 +76,8 @@ namespace responsi
                         Status = d.Status,
                         Fitur = d.Fitur,
                         Bug = d.Bug,
-                        Skor = d.HitungSkor().ToString("0.##"), // Format 2 desimal
-                        TotalGaji = d.HitungGaji().ToString("N0") // Format mata uang
+                        Skor = d.HitungSkor().ToString("0.##"), 
+                        TotalGaji = d.HitungGaji().ToString("N0") 
                     });
                 }
 
@@ -99,7 +93,6 @@ namespace responsi
             }
         }
 
-        // --- VALIDASI BUDGET (Challenge Logic) ---
         private bool IsBudgetSafe(int idProyek, decimal gajiDeveloperBaru, int ignoreDevId = -1)
         {
             decimal totalGajiExisting = 0;
@@ -109,7 +102,6 @@ namespace responsi
             {
                 conn.Open();
 
-                // 1. Ambil Budget Proyek
                 string sqlBudget = "SELECT budget FROM proyek WHERE id_proyek = @id";
                 using (NpgsqlCommand cmd = new NpgsqlCommand(sqlBudget, conn))
                 {
@@ -118,8 +110,6 @@ namespace responsi
                     if (result != null) budgetProyek = Convert.ToDecimal(result);
                 }
 
-                // 2. Hitung total gaji developer LAIN di proyek ini
-                // Kita pakai listDevs yang sudah di-load di memori agar tidak perlu query ribet
                 foreach (var dev in listDevs)
                 {
                     // Hanya hitung developer di proyek yang sama, KECUALI developer yang sedang diedit
@@ -130,7 +120,6 @@ namespace responsi
                 }
             }
 
-            // 3. Cek apakah Budget Cukup?
             decimal totalPerkiraan = totalGajiExisting + gajiDeveloperBaru;
 
             if (totalPerkiraan > budgetProyek)
@@ -141,12 +130,10 @@ namespace responsi
             return true;
         }
 
-        // --- INSERT DENGAN FUNCTION & VALIDASI ---
         private void btnInsert_Click(object sender, EventArgs e)
         {
             if (cbProyek.SelectedIndex == -1 || cbStatus.SelectedIndex == -1) return;
 
-            // 1. Buat Objek Dummy untuk hitung prediksi gaji
             Developer tempDev;
             if (cbStatus.Text == "Full Time") tempDev = new FullTimeDeveloper();
             else tempDev = new FreelanceDeveloper();
@@ -157,16 +144,13 @@ namespace responsi
             decimal prediksiGaji = tempDev.HitungGaji();
             int idProyek = Convert.ToInt32(cbProyek.SelectedValue);
 
-            // 2. Cek Budget
             if (!IsBudgetSafe(idProyek, prediksiGaji)) return;
 
-            // 3. Insert via Stored Function (sesuai soal)
             try
             {
                 using (NpgsqlConnection conn = new NpgsqlConnection(connString))
                 {
                     conn.Open();
-                    // Memanggil Function PostgreSQL
                     string sql = "SELECT insert_developer(@id_p, @nama, @status, @fitur, @bug)";
                     using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
                     {
@@ -178,7 +162,7 @@ namespace responsi
                         cmd.ExecuteNonQuery();
                     }
                 }
-                LoadDataDeveloper(); // Refresh grid
+                LoadDataDeveloper(); 
                 ClearForm();
             }
             catch (Exception ex)
@@ -187,12 +171,10 @@ namespace responsi
             }
         }
 
-        // --- UPDATE DENGAN FUNCTION & VALIDASI ---
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (selectedId == 0) return;
 
-            // 1. Buat Objek Dummy
             Developer tempDev;
             if (cbStatus.Text == "Full Time") tempDev = new FullTimeDeveloper();
             else tempDev = new FreelanceDeveloper();
@@ -202,10 +184,8 @@ namespace responsi
 
             int idProyek = Convert.ToInt32(cbProyek.SelectedValue);
 
-            // 2. Cek Budget (exclude ID yang sedang diedit agar tidak double count)
             if (!IsBudgetSafe(idProyek, tempDev.HitungGaji(), selectedId)) return;
 
-            // 3. Update via Function
             try
             {
                 using (NpgsqlConnection conn = new NpgsqlConnection(connString))
@@ -232,10 +212,8 @@ namespace responsi
             }
         }
 
-        // Fungsi Helper lain tetap sama seperti sebelumnya (LoadProyekCombo, CellClick, dll)
         private void LoadProyekCombo()
         {
-            // Sama seperti kode sebelumnya
             using (NpgsqlConnection conn = new NpgsqlConnection(connString))
             {
                 conn.Open();
@@ -252,9 +230,6 @@ namespace responsi
         {
             if (e.RowIndex >= 0)
             {
-                // Ambil data dari listDevs berdasarkan index baris agar tipe datanya aman
-                // (Asumsi urutan list dan grid sama karena sorting ID ASC)
-                // Jika grid di-sort user, ambil ID dari cell tersembunyi
                 int id = Convert.ToInt32(dgvData.Rows[e.RowIndex].Cells["ID"].Value);
                 Developer dev = listDevs.Find(d => d.Id == id);
 
@@ -276,7 +251,6 @@ namespace responsi
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            // Implementasi delete memanggil function delete_developer(@id)
             if (selectedId == 0) return;
             if (MessageBox.Show("Hapus?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
