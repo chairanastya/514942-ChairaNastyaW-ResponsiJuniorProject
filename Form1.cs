@@ -16,6 +16,8 @@ namespace responsi
         {
             InitializeComponent();
         }
+
+        // ENCAPSULATION
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadProyekCombo();
